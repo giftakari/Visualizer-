@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tools</title>
+   
+    <link href="./Content/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="p-2">
+    
+<h2 >Visualizer</h2>
+
+<div class="form-row">
+    <div class="input-group">
+        <textarea class="form-control " id="result" aria-label="With textarea"></textarea>
+    </div>
+</div>
+
+<div class="row mt-3" id="Visualize">
+
+</div>
+
+   
+    <script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./Scripts/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./Scripts/SearchV9.js"></script>
+    <script type="text/javascript" src="./Scripts/SearchV11.js"></script>
+    <script type="text/javascript" src="./Scripts/utils.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#result').bind('input onChange', function () {
+                results = $("#result").val();
+
+                if (results != null && results != "") {
+                    $("#Visualize").empty();
+                    Jsonresults = JSON.parse(results);
+                    cards = detectfunctionandversion(Jsonresults);
+                    $("#Visualize").append(cards);
+                }
+
+            });
+        });
+
+    </script>
+</body>
+</html>
